@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "OptiKlavi.UI (Desktop)": {
+      "commandName": "Project",
+      "compatibleTargetFramework": "desktop",
+      "nativeDebugging": true
+    },
+    "OptiKlavi.UI (Desktop WSL2)": {
+      "commandName": "WSL2",
+      "commandLineArgs": "{ProjectDir}/bin/Debug/net8.0-desktop/OptiKlavi.UI.dll",
+      "distributionName": "",
+      "compatibleTargetFramework": "desktop"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:8080",
+      "sslPort": 0
+    }
+  }
+}

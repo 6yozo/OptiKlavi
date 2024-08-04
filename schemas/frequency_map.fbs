@@ -1,0 +1,12 @@
+namespace OptiKlavi.FrequencyMap;
+
+table KeyValue {
+  key: string;
+  value: int;
+}
+
+table FrequencyMap {
+  entries: [KeyValue];
+}
+
+root_type FrequencyMap;
