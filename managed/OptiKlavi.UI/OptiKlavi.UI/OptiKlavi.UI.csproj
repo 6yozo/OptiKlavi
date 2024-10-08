@@ -34,6 +34,8 @@
     -->
     <UnoFeatures>
     </UnoFeatures>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>AnyCPU;Linux Any CPU;WINDOWS Any CPU;LINUX Any CPU</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="..\..\..\schemas\frequency_map.fbs">
@@ -52,14 +54,32 @@
     <ProjectReference Include="..\..\..\cmake-build-debug\_deps\flatbuffers-src\net\FlatBuffers\Google.FlatBuffers.csproj" />
   </ItemGroup>
 
-  <!-- Copy native DLL into the Output Directory -->
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|LINUX Any CPU'">
+      <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|OSX Any CPU'">
+      <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|WINDOWS Any CPU'">
+      <DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>
+    </PropertyGroup>
+
+  <!-- Copy native DLL into the Output Directory  Condition="'$(RuntimeIdentifier)' == 'linux-x64'"-->
   <Target Name="CopyNativeDll" AfterTargets="Build">
-    <Copy SourceFiles="../../../cmake-build-debug/native/OptiKlavi.dll"
+    <Copy Condition="'$(Configuration)|$(Platform)' == 'Debug|WINDOWS Any CPU'"
+          SourceFiles="../../../cmake-build-debug/native/OptiKlavi.dll"
           DestinationFolder="$(OutputPath)" />
-    <Copy SourceFiles="../../../cmake-build-debug/native/OptiKlavi.pdb"
+    <Copy Condition="'$(Configuration)|$(Platform)' == 'Debug|WINDOWS Any CPU'"
+          SourceFiles="../../../cmake-build-debug/native/OptiKlavi.pdb"
+          DestinationFolder="$(OutputPath)" />
+
+    <Copy  Condition="'$(Configuration)|$(Platform)' == 'Debug|LINUX Any CPU'"
+          SourceFiles="../../../cmake-build-debug/native/libOptiKlavi.so"
           DestinationFolder="$(OutputPath)" />
   </Target>
-  
+
   <Target Name="DisplayOutputPath">
     <Message Text="Output Path: $(OutputPath)" Importance="high" />
   </Target>

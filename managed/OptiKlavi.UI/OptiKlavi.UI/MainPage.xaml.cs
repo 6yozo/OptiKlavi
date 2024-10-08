@@ -12,11 +12,29 @@ public sealed partial class MainPage : Page
         public IntPtr builderContext;  // Pointer to the FlatBufferBuilder
         public int bufferSize;         // Size of the buffer
     }
+    
+#if WINDOWS
+        const string OptiKlaviLibrary = "OptiKlavi.dll";
+#elif LINUX
+        const string OptiKlaviLibrary = "libOptiKlavi.so";
+#elif OSX
+        const string OptiKlaviLibrary = "libOptiKlavi.dylib";       
+#else
+        const string OptiKlaviLibrary = null;
+#endif
 
-    [DllImport("OptiKlavi.dll", CallingConvention = CallingConvention.Cdecl)]
+    static MainPage()
+    {
+        if (OptiKlaviLibrary == null)
+        {
+            throw new PlatformNotSupportedException("Unsupported platform");
+        }
+    }
+    
+    [DllImport(OptiKlaviLibrary, CallingConvention = CallingConvention.Cdecl)]
     public static extern int CalculateNGramFrequency(string filename, ref FlatBufferResult result);
 
-    [DllImport("OptiKlavi.dll", CallingConvention = CallingConvention.Cdecl)]
+    [DllImport(OptiKlaviLibrary, CallingConvention = CallingConvention.Cdecl)]
     public static extern void FreeResult(ref FlatBufferResult result);
     
     public MainPage()

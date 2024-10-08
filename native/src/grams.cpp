@@ -62,11 +62,11 @@ struct FlatBufferResult {
 
 extern "C" { // Ensure C linkage for name mangling
 
-    OPTIKLAVI_API void __cdecl FreeResult(FlatBufferResult* result) {
+    OPTIKLAVI_API void CALLING_CONVENTION FreeResult(FlatBufferResult* result) {
         delete result->builderContext;
     }
 
-    OPTIKLAVI_API int __cdecl CalculateNGramFrequency(const char* filename, FlatBufferResult* result) {
+    OPTIKLAVI_API int CALLING_CONVENTION CalculateNGramFrequency(const char* filename, FlatBufferResult* result) {
         std::ifstream file(filename, std::ios::binary);
         if (!file.is_open()) {
             return -1;

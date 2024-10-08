@@ -8,6 +8,7 @@
     #else
         #define OPTIKLAVI_API __declspec(dllimport)
     #endif
+    #define CALLING_CONVENTION __cdecl
 #else
     // Non-Windows platforms like Linux and macOS use visibility attributes
     #if defined(OPTIKLAVI_EXPORT)
@@ -15,4 +16,5 @@
     #else
         #define OPTIKLAVI_API
     #endif
+    #define CALLING_CONVENTION
 #endif
