@@ -1,0 +1,134 @@
+# Ignore developer-specific CMake settings
+CMakeDevSettings.cmake
+
+# Exclude everything in corpora but include 'README.txt'
+corpora/*
+!corpora/README.txt
+
+.vscode
+.vs
+
+build
+bin
+cmake-build-debug
+schemas/generated/*
+
+### jetbrains related files suggested by ChatGPT
+
+# Ignore all hidden files and folders (those starting with .)
+.*
+!.gitignore
+
+# JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# User-specific stuff
+*.DotSettings.user
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/**/shelf/
+.idea/**/vcs.xml
+.idea/**/jsLibraryMappings.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# AWS User-specific
+.idea/**/aws.xml
+
+# Generated files
+*.pyc
+*.pyo
+*.min.js
+*.map
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Exclude build directories
+/build/
+/out/
+/target/
+
+# Dependency directories
+node_modules/
+vendor/
+.bower_components/
+
+# Compiled source and Bytecode files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.jar
+*.war
+*.ear
+
+# Virtual environment files
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+*.bat
+*.cmd
+*.msi
+*.chm
+*.cab
+*.msm
+*.msu
+
+# macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Gradle specific
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.gradle/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Web specific
+bower_components/
+
+### End of jetbrains related files suggested by ChatGPT
