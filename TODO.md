@@ -1,1 +1,0 @@
-Add the developer specific settings as a template to the project.
